@@ -1,0 +1,44 @@
+<table
+  class="table"
+  [class.table-striped]="striped"
+  [class.table-bordered]="bordered"
+  *ngIf="!isLoading; else loading"
+>
+  <thead class="styled">
+    <tr>
+      <ng-container *ngFor="let column of columns">
+        <th [class.text-right]="column.isRightAligned">{{ column.columnName }}</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of resolvedData">
+      <ng-container *ngFor="let column of columns">
+        <td [class.text-right]="column.isRightAligned">
+          <ng-container
+            *ngTemplateOutlet="
+              column.cellTemplate ? column.cellTemplate : defaultCellTemplate;
+              context: { $implicit: item, column: column }
+            "
+          ></ng-container>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #loading>
+  <div>
+    <ng-container *ngIf="loadingTemplate; else defaultLoading">
+      <ng-container *ngTemplateOutlet="loadingTemplate.template"> </ng-container>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #defaultLoading>
+  <h3>Loading...</h3>
+</ng-template>
+
+<ng-template #defaultCellTemplate let-item let-column="column">
+  {{ item[column.dataProperty] }}
+</ng-template>
