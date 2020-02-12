@@ -1,8 +1,16 @@
-<app-data-table [data]="data" [bordered]="true" [striped]="true" [columns]="columns">
+<app-data-table [data]="data" [bordered]="true" [striped]="true">
   <data-table-column name="name">
     <ng-template data-table-column-template let-row>
       <span class="text-right">
         Tada <b>{{ row.name }}</b>
+      </span>
+    </ng-template>
+  </data-table-column>
+
+  <data-table-column name="gender">
+    <ng-template data-table-column-template let-row>
+      <span class="text-right">
+        Gender: <b>{{ row.gender }}</b>
       </span>
     </ng-template>
   </data-table-column>

@@ -27,36 +27,42 @@ export class AppComponent {
     {
       name: 'some name 1',
       lastName: 'some last name 1',
-      age: 13
+      age: 13,
+      gender: 'male'
     },
     {
       name: 'some name 2',
       lastName: 'some last name 2',
-      age: 18
+      age: 18,
+      gender: 'male'
     },
     {
       name: 'some name 3',
       lastName: 'some last name 3',
-      age: 15
+      age: 15,
+      gender: 'male'
     }
-  ]).pipe(delay(5000));
+  ]).pipe(delay(2000));
 
   changeData() {
     this.data = of([
       {
         name: 'Tarik',
         lastName: 'Eminagic',
-        age: 15
+        age: 15,
+        gender: 'male'
       },
       {
         name: 'some name 2',
         lastName: 'some last name 2',
-        age: 18
+        age: 18,
+        gender: 'male'
       },
       {
         name: 'some name 3',
         lastName: 'some last name 3',
-        age: 15
+        age: 15,
+        gender: 'male'
       }
     ]).pipe(delay(2000));
   }
